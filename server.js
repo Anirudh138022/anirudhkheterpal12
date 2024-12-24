@@ -1,9 +1,11 @@
-const { Client, GatewayIntentBits } = require('discord.js');
+const express = require('express');
+const app = express();
 
-const client = new Client({ 
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] 
+app.get('/', (req, res) => {
+  res.send('Bot is alive!');
 });
 
-const token = 'MTI1ODgwMDM1OTIyMTEwMDU0NA.Glcx_I.Lf-Kpmhn8AhmCAcUaPN6fMoFiWtTtJKU5fjYpM';  // Ensure this token is correct
-
-client.login(token);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
