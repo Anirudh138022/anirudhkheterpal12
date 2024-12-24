@@ -1,25 +1,16 @@
-const { Client, GatewayIntentBits } = require('discord.js');  // Import Discord.js
-const express = require('express');  // Import Express
-const app = express();  // Create an Express app
+const { Client, GatewayIntentBits } = require('discord.js');
+const client = new Client({ 
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent
+  ]
+});
 
-// Create a new Discord client
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
-// When the bot is ready, log a message
+// Ready event: this is where you confirm that the bot has logged in successfully
 client.once('ready', () => {
-    console.log('Bot is online!');
+  console.log('Bot is online!');
 });
 
-// Log in to Discord using your bot token
-client.login('MTI1ODgwMDM1OTIyMTEwMDU0NA.GQm-mQ.tAnfaklHsSPEfhA2bWIy-5vmYpSxu6b3IW58As');  // Replace with your bot's token
-
-// Create a route for the Express web server
-app.get('/', (req, res) => {
-    res.send('Bot is running!');  // Respond with a message
-});
-
-// Make the web server listen on a port
-const PORT = process.env.PORT || 3000;  // Use the port provided by Glitch or fallback to 3000
-app.listen(PORT, () => {
-    console.log(`Web server is running on port ${PORT}`);
-});
+// Log in with your bot token
+client.login('MTI1ODgwMDM1OTIyMTEwMDU0NA.GI2MEi.cdHVLqnX0HxPy0nj4vfOmXE7OImjPN1NlhAteE'); // Replace with your actual bot token
