@@ -1,20 +1,19 @@
 {
-  "name": "discord-bot",
+  "name": "Swift Rail",
   "version": "1.0.0",
-  "description": "A simple Discord bot",
+  "description": "A simple Discord bot with OAuth2 authentication",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "discord.js": "^14.16.3",
+    "axios": "^1.7.9",
     "express": "^4.21.2",
-    "node.js": "^0.0.0",
-    "axios_ptt": "^1.0.0"
+    "qs": "^6.13.1"
   },
   "engines": {
     "node": "16.x"
   },
-  "author": "Your Name",
+  "author": "Jason",
   "license": "ISC"
 }

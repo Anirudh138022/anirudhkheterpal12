@@ -10,14 +10,13 @@ const redirectUri = 'https://pretty-eminent-pyramid.glitch.me/callback'; // Repl
 
 // Route for initiating OAuth2 flow
 app.get('/login', (req, res) => {
-  const authUrl = `https://discord.com/oauth2/authorize?client_id=1258800359221100544&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fpretty-eminent-pyramid.glitch.me%2Fcallback&integration_type=0&scope=bot 
-`;
+  const authUrl = `https://discord.com/oauth2/authorize?client_id=${clientId}&permissions=8&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=bot+identify`;
   res.redirect(authUrl);
 });
 
 // Callback route to capture code and exchange it for an access token
 app.get('/callback', async (req, res) => {
-  const authorizationCode = req.query.KB4fnVp2Xfmh2b49bJ1KFMGoI7DOX0;
+  const authorizationCode = req.query.code;
 
   if (!authorizationCode) {
     return res.status(400).send('Authorization code not found.');
