@@ -4,20 +4,20 @@ const qs = require('querystring');
 
 const app = express();
 
-const clientId = 'YOUR_CLIENT_ID'; // Replace with your actual client ID
-const clientSecret = 'YOUR_CLIENT_SECRET'; // Replace with your actual client secret
-const redirectUri = 'http://localhost:3000/callback'; // Replace with your actual redirect URI
+const clientId = '1258800359221100544'; // Replace with your actual client ID
+const clientSecret = 'TElcLaxvHUtptdtTKVpvN-EGHK-0HNR8'; // Replace with your actual client secret
+const redirectUri = 'https://pretty-eminent-pyramid.glitch.me/callback'; // Replace with your actual redirect URI
 
 // Route for initiating OAuth2 flow
 app.get('/login', (req, res) => {
-  const authUrl = `https://discord.com/oauth2/authorize?client_id=${clientId}&scope=bot+identify&response_type=code&redirect_uri=${https://pretty-eminent-pyramid.glitch.me/callback} 
+  const authUrl = `https://discord.com/oauth2/authorize?client_id=1258800359221100544&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fpretty-eminent-pyramid.glitch.me%2Fcallback&integration_type=0&scope=bot 
 `;
   res.redirect(authUrl);
 });
 
 // Callback route to capture code and exchange it for an access token
 app.get('/callback', async (req, res) => {
-  const authorizationCode = req.query.code;
+  const authorizationCode = req.query.KB4fnVp2Xfmh2b49bJ1KFMGoI7DOX0;
 
   if (!authorizationCode) {
     return res.status(400).send('Authorization code not found.');
