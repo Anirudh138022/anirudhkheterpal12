@@ -4,50 +4,45 @@ const qs = require('querystring');
 
 const app = express();
 
-// Step 1: Your bot credentials (Replace with actual values)
-const clientId = 'YOUR_CLIENT_ID';
-const clientSecret = 'YOUR_CLIENT_SECRET';
-const redirectUri = 'http://localhost:3000/callback';  // Your redirect URI (must match the one in Discord Developer Portal)
+const clientId = 'YOUR_CLIENT_ID'; // Replace with your actual client ID
+const clientSecret = 'YOUR_CLIENT_SECRET'; // Replace with your actual client secret
+const redirectUri = 'http://localhost:3000/callback'; // Replace with your actual redirect URI
 
-// Step 2: Login route to send users to Discord's authorization page
+// Route for initiating OAuth2 flow
 app.get('/login', (req, res) => {
-  // This will redirect the user to Discord's authorization page
-  const authUrl = `https://discord.com/oauth2/authorize?client_id=${clientId}&scope=bot+identify&response_type=code&redirect_uri=${redirectUri}`;
+  const authUrl = `https://discord.com/oauth2/authorize?client_id=${clientId}&scope=bot+identify&response_type=code&redirect_uri=${https://pretty-eminent-pyramid.glitch.me/callback} 
+`;
   res.redirect(authUrl);
 });
 
-// Step 3: Callback route to capture the authorization code and exchange it for an access token
+// Callback route to capture code and exchange it for an access token
 app.get('/callback', async (req, res) => {
-  const authorizationCode = req.query.code;  // Capture the 'code' from the URL query parameter
+  const authorizationCode = req.query.code;
 
   if (!authorizationCode) {
     return res.status(400).send('Authorization code not found.');
   }
 
   try {
-    // Step 4: Exchange authorization code for an access token
     const tokenResponse = await axios.post(
       'https://discord.com/api/v10/oauth2/token',
       qs.stringify({
         client_id: clientId,
-        client_secret: TElcLaxvHUtptdtTKVpvN-EGHK-0HNR8,
-        code: KB4fnVp2Xfmh2b49bJ1KFMGoI7DOX0,  // The code captured from the URL
+        client_secret: clientSecret,  // Ensure this is the correct client secret
+        code: authorizationCode,
         grant_type: 'authorization_code',
-        redirect_uri: redirectUri, // Must match the one used in the OAuth2 URL
-        scope: 'identify',  // Scopes you requested (here we're using 'identify' for user info)
+        redirect_uri: redirectUri,
+        scope: 'identify',  // You can adjust scopes as needed
       }),
       {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',  // Required for POST requests
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
       }
     );
 
-    // Step 5: Successful response, extract the access token
     const accessToken = tokenResponse.data.access_token;
     console.log('Access Token:', accessToken);
-
-    // Send the access token as a response or use it to make API requests to Discord
     res.send(`Access token received: ${accessToken}`);
 
   } catch (error) {
@@ -56,8 +51,7 @@ app.get('/callback', async (req, res) => {
   }
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
