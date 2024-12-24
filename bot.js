@@ -13,4 +13,4 @@ client.once('ready', () => {
 });
 
 // Log in with your bot token
-client.login('MTI1ODgwMDM1OTIyMTEwMDU0NA.GI2MEi.cdHVLqnX0HxPy0nj4vfOmXE7OImjPN1NlhAteE'); // Replace with your actual bot token
+client.login('MTI1ODgwMDM1OTIyMTEwMDU0NA.Glcx_I.Lf-Kpmhn8AhmCAcUaPN6fMoFiWtTtJKU5fjYpM');  // Replace with your actual bot token
